@@ -314,7 +314,6 @@ $result = mysqli_query($conn, "SELECT * FROM blog ORDER BY data_postimit DESC LI
 <?php endif; ?>
 
 <?php if ($consent === 'accepted'): ?>
-    <!-- Këtu ngarko Google Analytics, Facebook Pixel etj. -->
-    <!-- <script src="analytics.js"></script> -->
+  
 <?php endif; ?>
 <?php include 'includes/footer.php'; ?>
