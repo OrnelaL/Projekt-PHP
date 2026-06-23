@@ -5,6 +5,22 @@ include "config/db_conn.php";
 
 $sql = "SELECT * FROM kafshet";
 $result = mysqli_query($conn, $sql);
+
+
+// ===== COOKIE CONSENT LOGJIKA =====
+if (isset($_POST['cookie_action'])) {
+    $action = $_POST['cookie_action'];
+    if ($action === 'accept') {
+        setcookie('cookie_consent', 'accepted', time() + (365 * 24 * 60 * 60), '/');
+        $_COOKIE['cookie_consent'] = 'accepted';
+    } elseif ($action === 'decline') {
+        setcookie('cookie_consent', 'declined', time() + (30 * 24 * 60 * 60), '/');
+        $_COOKIE['cookie_consent'] = 'declined';
+    }
+}
+
+$consent    = $_COOKIE['cookie_consent'] ?? null;
+$showBanner = ($consent === null);
 ?>
 
 
@@ -266,4 +282,39 @@ $result = mysqli_query($conn, "SELECT * FROM blog ORDER BY data_postimit DESC LI
         });
     });
 </script>
+<!-- COOKIE BANNER -->
+<?php if ($showBanner): ?>
+    <div id="cookie-banner">
+        <p>
+        <p>
+            🍪 We use <strong>cookies</strong> to improve your browsing experience.
+            By clicking <em>Accept</em>, you agree to our
+            <a href="/privacy-policy" target="_blank">Privacy Policy</a>.
+        </p>
+
+        <div class="cookie-buttons">
+            <form method="POST" style="display:inline;">
+                <input type="hidden" name="cookie_action" value="accept">
+                <button type="submit" class="btn-accept">✔ Accept</button>
+            </form>
+
+            <form method="POST" style="display:inline;">
+                <input type="hidden" name="cookie_action" value="decline">
+                <button type="submit" class="btn-decline">✘ Decline</button>
+            </form>
+        </div>
+    </div>
+<?php endif; ?>
+
+<!-- STATUSI PAS ZGJEDHJES -->
+<?php if (!$showBanner && $consent): ?>
+    <div id="consent-status">
+        <?= $consent === 'accepted' ? '✔ Cookies u pranuan!' : '✘ Cookies u refuzuan.' ?>
+    </div>
+<?php endif; ?>
+
+<?php if ($consent === 'accepted'): ?>
+    <!-- Këtu ngarko Google Analytics, Facebook Pixel etj. -->
+    <!-- <script src="analytics.js"></script> -->
+<?php endif; ?>
 <?php include 'includes/footer.php'; ?>

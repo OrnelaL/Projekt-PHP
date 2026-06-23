@@ -9,7 +9,7 @@
              </div>
              <div class="col-lg-2 footer-links">
                  <h3>Menu</h3>
-                 <a href="index.html">Home</a>
+                 <a href="index.php">Home</a>
                  <a href="about.php">About</a>
                  <a href="animal.php">Animals</a>
                  <a href="blog.php">Blog</a>
@@ -34,7 +34,7 @@
                  <div class="copyright d-flex justify-content-between text-white pt-5">
                      <p>&copy;2026 Copyright. All rights reserved.
                      </p>
-                     <!-- <p>Made by Ornela</p> -->
+                     <p><a href="privacy-policy.php" class="text-white">Privacy Policy</a></p>
                  </div>
              </div>
          </div>

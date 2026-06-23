@@ -31,10 +31,16 @@ if (session_status() === PHP_SESSION_NONE) {
                 </li>
 
                 <?php if (isset($_SESSION["user"])): ?>
-                    <!-- Perdoruesi eshte i loguar -->
-                    <li class="user-info">
+                    <!-- Perdoruesi eshtne i loguar -->
+                    <!-- <li class="user-info">
                         <span class="nav-link px-3"> <?php echo htmlspecialchars($_SESSION["user"]); ?></span>
+                    </li> -->
+                    <?php if ($_SESSION["role"] === "user"): ?>
+                    <li class="user-info">
+                        <!-- <span class="nav-link px-3"> <?php echo htmlspecialchars($_SESSION["user"]); ?></span> -->
+                          <a href="user.php" class="nav-link px-3"> <?php echo htmlspecialchars($_SESSION["user"]); ?></a>
                     </li>
+                     <?php endif; ?>
 
                     <!-- Kontrollimi nqs eshte admin dhe e ben ridirect te admin/dashboard.php -->
                     <?php if (isset($_SESSION["role"]) && $_SESSION["role"] === "admin"): ?>
