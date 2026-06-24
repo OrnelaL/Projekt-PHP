@@ -149,65 +149,72 @@ $showBanner = ($consent === null);
 <!-- Testimonials -->
 <section class="sector">
     <div class="container">
-        <h5 class="detalis text-center">Testimonials</h5>
-        <h3 class="title text-center">Client Feedback & Reviews</h3>
+        <h5 class="detalis text-center">Visitor Reviews</h5>
+        <h3 class="title text-center">What Our Guests Say</h3>
+
         <div class="owl-carousel owl-theme testimonials-owl pt-5">
+
             <div class="item">
                 <div class="testimonals text-center">
-                    <h5>Lorem Ipsum</h5>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit obcaecati dolor ullam
-                        autem facere, unde sapiente temporibus ad labore, qui nam corrupti ut hic reiciendis eos,
-                        debitis ex beatae nihil?</p>
-                    <p>Lorem Ipsum</p>
+                    <h5>Wonderful Experience</h5>
+                    <p>
+                        Our family had an amazing day at the zoo. The animals were well cared for,
+                        the exhibits were informative, and the staff was incredibly friendly.
+                        We can't wait to visit again!
+                    </p>
+                    <p>— Sarah Johnson</p>
                 </div>
             </div>
+
             <div class="item">
                 <div class="testimonals text-center">
-                    <h5>Lorem Ipsum</h5>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit obcaecati dolor
-                        ullam
-                        autem facere, unde sapiente temporibus ad labore, qui nam corrupti ut hic reiciendis
-                        eos,
-                        debitis ex beatae nihil?</p>
-                    <p>Lorem Ipsum</p>
+                    <h5>Educational and Fun</h5>
+                    <p>
+                        The zoo offers a perfect balance of entertainment and education.
+                        My children learned so much about wildlife conservation while having
+                        a great time exploring.
+                    </p>
+                    <p>— Michael Thompson</p>
                 </div>
             </div>
+
             <div class="item">
                 <div class="testimonals text-center">
-                    <h5>Lorem Ipsum</h5>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit obcaecati dolor
-                        ullam
-                        autem facere, unde sapiente temporibus ad labore, qui nam corrupti ut hic reiciendis
-                        eos,
-                        debitis ex beatae nihil?</p>
-                    <p>Lorem Ipsum</p>
+                    <h5>A Great Family Destination</h5>
+                    <p>
+                        Clean facilities, beautiful animal habitats, and plenty of activities
+                        for kids. It was one of the highlights of our trip.
+                    </p>
+                    <p>— Emily Davis</p>
                 </div>
             </div>
+
             <div class="item">
                 <div class="testimonals text-center">
-                    <h5>Lorem Ipsum</h5>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit obcaecati dolor
-                        ullam
-                        autem facere, unde sapiente temporibus ad labore, qui nam corrupti ut hic reiciendis
-                        eos,
-                        debitis ex beatae nihil?</p>
-                    <p>Lorem Ipsum</p>
+                    <h5>Highly Recommended</h5>
+                    <p>
+                        I was impressed by the zoo's commitment to conservation and animal welfare.
+                        Every exhibit was thoughtfully designed and enjoyable to explore.
+                    </p>
+                    <p>— Robert Wilson</p>
                 </div>
             </div>
+
             <div class="item">
                 <div class="testimonals text-center">
-                    <h5>Lorem Ipsum</h5>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit obcaecati dolor
-                        ullam
-                        autem facere, unde sapiente temporibus ad labore, qui nam corrupti ut hic reiciendis
-                        eos,
-                        debitis ex beatae nihil?</p>
-                    <p>Lorem Ipsum</p>
+                    <h5>Memorable Visit</h5>
+                    <p>
+                        From the entrance to the final exhibit, everything was organized and engaging.
+                        A fantastic place for animal lovers of all ages.
+                    </p>
+                    <p>— Jessica Miller</p>
                 </div>
             </div>
+
         </div>
     </div>
 </section>
+
 <!-- Blog -->
 <?php
 $result = mysqli_query($conn, "SELECT * FROM blog ORDER BY data_postimit DESC LIMIT 3");
