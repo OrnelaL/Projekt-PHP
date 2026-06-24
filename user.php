@@ -37,102 +37,117 @@ if ($user_role === 'admin') {
 
 ?>
 
-<div class="dashboard-container">
-    <!-- Welcome Section -->
-    <div class="welcome-section">
-        <h1>👋 Welcome, <?php echo htmlspecialchars($user_name); ?>!</h1>
-        <p>📧 <?php echo htmlspecialchars($user_email); ?></p>
-        <span class="user-badge">
-            <?php echo $user_role === 'admin' ? 'Admin' : '👤 User'; ?>
-        </span>
-    </div>
-
-    <div class="row g-3">
-        <div class=" col-lg-4 ">
-            <div class="stat-card">
-                <div class="stat-icon">📋</div>
-                <div class="stat-number"><?php echo $total_bookings; ?></div>
-                <div class="stat-label">Booking</div>
+<main class="user-dashboard bg-sector">
+    <div class="dashboard-container">
+        <section class="welcome-section user-welcome">
+            <div>
+                <p class="detalis user-kicker">My Zoo Account</p>
+                <h1>Welcome, <?php echo htmlspecialchars($user_name); ?>!</h1>
+                <p><i class="fa-solid fa-envelope"></i> <?php echo htmlspecialchars($user_email); ?></p>
             </div>
-        </div>
-        <div class="col-lg-4 ">
-            <div class="stat-card">
-                <div class="stat-icon"><i class="fa-solid fa-calendar" style="color:#155724;"></i></div>
+            <span class="user-badge">
+                <i class="fa-solid fa-user"></i>
+                <?php echo $user_role === 'admin' ? 'Admin' : 'User'; ?>
+            </span>
+        </section>
 
-                <div class="stat-label">See the events organized at the zoo.</div>
-                <br>
-                <a href="tickets.php" class="btn buy-btn">Events</a>
+        <section class="user-stats row g-4">
+            <div class="col-lg-4">
+                <div class="stat-card">
+                    <div class="stat-icon"><i class="fa-solid fa-ticket"></i></div>
+                    <div class="stat-number"><?php echo $total_bookings; ?></div>
+                    <div class="stat-label">Your bookings</div>
+                    <span class="stat-card-spacer"></span>
+                </div>
             </div>
-        </div>
-        <div class="col-lg-4">
-            <div class="stat-card">
-                <div class="stat-icon"><i class="fa-solid fa-hippo" style="color:#ff9800;"></i></div>
+            <div class="col-lg-4">
+                <div class="stat-card">
+                    <div class="stat-icon"><i class="fa-solid fa-calendar" style="color:#155724;"></i></div>
 
-                <div class="stat-label">The animals that are in the zoo.</div>
-                <br>
-                <a href="animal.php" class="btn buy-btn">Animals</a>
+                    <div class="stat-label">See the events organized at the zoo.</div>
+                    <br>
+                    <a href="tickets.php" class="btn buy-btn">Events</a>
+                </div>
+
+
             </div>
-        </div>
-    </div>
+            <div class="col-lg-4">
+                <div class="stat-card">
+                    <div class="stat-icon"><i class="fa-solid fa-hippo" style="color:#ff9800;"></i></div>
 
-    <!-- Quick Actions -->
-    <div class="quick-actions">
-        <h2 class="section-title">🚀 Quick Actions</h2>
-        <div class="action-buttons">
-            <a href="index.php" class="action-btn">🏠 Home</a>
-            <a href="tickets.php" class="action-btn">🎟️ Tickets</a>
-            <?php if ($user_role === 'admin'): ?>
-                <a href="admin/dashboard.php" class="action-btn admin">🛠️ Admin Panel</a>
-            <?php endif; ?>
-            <a href="logout.php" class="action-btn" style="background: linear-gradient(135deg, #dc3545 0%, #c82333 100%);">🚪 Logout</a>
-        </div>
-    </div>
+                    <div class="stat-label">The animals that are in the zoo.</div>
+                    <br>
+                    <a href="animal.php" class="btn buy-btn">Animals</a>
+                </div>
 
-    <!-- Rezervimet -->
-    <h2 class="section-title">Your Booking</h2>
-    <div class="bookings-table">
-        <?php if ($bookings_query->num_rows > 0): ?>
-            <table>
-                <thead>
-                    <tr>
-                        <th>ID</th>
-                        <?php if ($user_role === 'admin'): ?><th>User</th><?php endif; ?>
-                        <th>Ticket</th>
-                        <th>Price</th>
-                        <th>Reservation Date</th>
-                        <th>Status</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <?php while ($booking = $bookings_query->fetch_assoc()): ?>
-                        <tr>
-                            <td><strong>#<?php echo $booking['id']; ?></strong></td>
-                            <?php if ($user_role === 'admin'): ?>
-                                <td><?php echo htmlspecialchars($booking['username']); ?></td>
-                            <?php endif; ?>
-                            <td><?php echo htmlspecialchars($booking['ticket_name']); ?></td>
-                            <td><span class="price-badge">€<?php echo number_format($booking['price'], 2); ?></span></td>
-                            <td><span class="date-badge">📅 <?php echo date('d/m/Y H:i', strtotime($booking['booking_date'])); ?></span></td>
-                            <td><span style="color: #28a745; font-weight: 600;">✓ Confirmed</span></td>
-                        </tr>
-                    <?php endwhile; ?>
-                </tbody>
-            </table>
-        <?php else: ?>
-            <div class="no-bookings">
-                <div class="no-bookings-icon">📭</div>
-                <h3>No reservations registered.</h3>
             </div>
-        <?php endif; ?>
+        </section>
+
+        <section class="quick-actions">
+            <div class="user-section-heading">
+                <p class="detalis">Quick Actions</p>
+                <h2 class="title">Plan your next visit</h2>
+            </div>
+            <div class="action-buttons">
+                <a href="index.php" class="action-btn"><i class="fa-solid fa-house"></i> Home</a>
+                <a href="tickets.php" class="action-btn"><i class="fa-solid fa-ticket"></i> Tickets</a>
+                <?php if ($user_role === 'admin'): ?>
+                    <a href="admin/dashboard.php" class="action-btn"><i class="fa-solid fa-screwdriver-wrench"></i> Admin Panel</a>
+                <?php endif; ?>
+                <a href="logout.php" class="action-btn logout-action"><i class="fa-solid fa-right-from-bracket"></i> Logout</a>
+            </div>
+        </section>
+
+        <section class="booking-section">
+            <div class="user-section-heading">
+                <p class="detalis">Reservations</p>
+                <h2 class="title">Your Booking</h2>
+            </div>
+
+            <div class="bookings-table">
+                <?php if ($bookings_query->num_rows > 0): ?>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <?php if ($user_role === 'admin'): ?><th>User</th><?php endif; ?>
+                                <th>Ticket</th>
+                                <th>Price</th>
+                                <th>Reservation Date</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php while ($booking = $bookings_query->fetch_assoc()): ?>
+                                <tr>
+                                    <td><strong>#<?php echo $booking['id']; ?></strong></td>
+                                    <?php if ($user_role === 'admin'): ?>
+                                        <td><?php echo htmlspecialchars($booking['username']); ?></td>
+                                    <?php endif; ?>
+                                    <td><?php echo htmlspecialchars($booking['ticket_name']); ?></td>
+                                    <td><span class="price-badge">&euro;<?php echo number_format($booking['total_price'] ?? $booking['price'], 2); ?></span></td>
+                                    <td><span class="date-badge"><i class="fa-solid fa-calendar-day"></i> <?php echo date('d/m/Y H:i', strtotime($booking['booking_date'])); ?></span></td>
+                                    <td><span class="status-confirmed"><i class="fa-solid fa-circle-check"></i> Confirmed</span></td>
+                                </tr>
+                            <?php endwhile; ?>
+                        </tbody>
+                    </table>
+                <?php else: ?>
+                    <div class="no-bookings">
+                        <div class="no-bookings-icon"><i class="fa-regular fa-calendar-xmark"></i></div>
+                        <h3>No reservations registered.</h3>
+                        <p>Choose a ticket and reserve your next zoo visit.</p>
+                    </div>
+                <?php endif; ?>
+            </div>
+
+            <div class="booking-cta">
+                <a href="tickets.php" class="btn buy-btn">View All Tickets</a>
+            </div>
+        </section>
     </div>
+</main>
 
-
-
-    <div style="text-align: center; margin: 40px 0;">
-        <a href="tickets.php" class="btn buy-btn" style="font-size: 1.1em; padding: 15px 40px;"> View All Tickets</a>
-    </div>
-</div>
-</div>
 <?php
 
 $conn->close();
